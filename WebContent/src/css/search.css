@@ -3,59 +3,59 @@ body {
   font-family: Arial, Calibri, sans-serif;
 }
 
-input {
+.tollbar input {
   width: 100%;
   height: 40px;
   color: #333;
   font-size: 16px;
   padding: 5px;
-  border: 1px solid #dedede;
-  border-radius: 3px;
+  border: none;
+  background:none !important;
   box-sizing: border-box;
 }
 
-#search-results {
-  width: 100%;
-  max-height: 200px;
-  border: 1px solid #dedede;
-  border-radius: 3px;
-  box-sizing: border-box;
-  overflow-y: auto;
+.tollbar textarea:focus, input:focus{
+	outline: none !important;
 }
 
-.search-result {
-  background: white;
-  padding: 10px;
+.tollbar {
+	padding: 0px 0px 0px 15px;
+	border-radius: 5px;
+    background: white;
+    margin-right: 10px;
 }
 
-.search-result:nth-child(even) {
-  background: #fafafa;
+md-toolbar button {
+  transition: background-color 0.2s ease-out;
+  background: none;
+  border: none;
+  padding-top: 5px;
 }
 
+.delete-button img {
+	width: 25px;
+} 
+
+
+.searchIcon img {
+	    width: 25px;
+    margin-top: 8px;
+    margin-right: 6px;
+}
+
+md-toolbar {
+	background-color: #0a9dc7!important;
+	padding: 12px !important;
+}
+  
 /* Animação da barra de busca */ 
-
-.funky-show-hide.ng-hide-add {
-  transform: rotateZ(0);
-  transform-origin: right;
-  transition: all 0.5s ease-in-out;
+.btnCancel {
+  -webkit-transition: all 5s ease;
+  transition: all 5s ease;
 }
 
-.funky-show-hide.ng-hide-add.ng-hide-add-active {
-  transform: rotateZ(-135deg);
-}
-
-.funky-show-hide.ng-hide-remove {
-  transform: rotateY(90deg);
-  transform-origin: left;
-  transition: all 0.5s ease;
-}
-
-.funky-show-hide.ng-hide-remove.ng-hide-remove-active {
-  transform: rotateY(0);
-}
-
-.check-element {
-  border: 1px solid black;
-  opacity: 1;
-  padding: 10px;
+.deleteIcon {
+	
+	background-image: url("../img/delete.svg");
+	
 }

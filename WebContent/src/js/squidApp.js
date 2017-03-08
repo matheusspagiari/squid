@@ -1,14 +1,34 @@
-var squidApp = angular.module("squidApp",['ngMaterial'])
+var squidApp = angular.module("squidApp",['ngMaterial',"ngImageAppear"])
+
+
+squidApp.controller('GalleryController', function(){
+	this.pictures = photos;
+});
+
+
+
+var photos = [{
+	      images: [
+	        "./img/insta/insta-1.jpg",
+	        "./img/insta/insta-2.jpg",
+	        "./img/insta/insta-7.jpg",
+	        "./img/insta/insta-4.jpg"
+	      ],
+}];
+
 
 squidApp.controller('searchController', function($scope) {
 	  $scope.data = data;
-
 	  $scope.setQuery = function(query) {
 	    $scope.query = query;
-	    $scope.focus = false;
 	  };
 	});
 
+   //Hide and show
+	
+	squidApp.controller('hideController', function(){
+	
+	});
 	// Returns the search function that will perform the filter on the data.
 	//
 	squidApp.filter('search', function() {
