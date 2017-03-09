@@ -11,6 +11,8 @@
   <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.css">
   <link rel="stylesheet" href="./css/search.css">
   <link rel="stylesheet" href="./css/container.css">
+  <link rel="stylesheet" href="./css/hashContainer.css">
+  
   
 
  <!-- Angular Material requires Angular.js Libraries -->
@@ -30,7 +32,8 @@
   
   
 </head>
-<body ng-app="squidApp" layout="column">
+<body ng-app="squidApp" layout="column" ng-controller = "tagController as tag"
+ 										     ng-submit= "tab.addHash(newItem)">
 <!-- HEADER - SEARCH INPUT -->
 
  <md-toolbar layout="row" layout-xs="column">
@@ -38,26 +41,45 @@
  	<i class="searchIcon"><img src="./img/search.svg"></i>
         <input flex type="text" class="btnCancel"
                placeholder="Search"
-               ng-model="query"
+               name="searchHash"
+               ng-model="tag.hashs.inputValue"
                ng-focus="isSearchFocused=true"
-               ng-blur="isSearchFocused=false">             
-   </div>
-         
-  <button class="button button-clear ng-hide delete-button"
+               ng-blur="isSearchFocused=false">   </div>
+        
+  <button class="button button-clear ng-hide buttons-search"
               ng-show="isSearchFocused"
               ng-click="query = ''">
               <img src="./img/delete.svg">
       </button>
+      
+      <button type="submit" ng-show="isSearchFocused" class="buttons-search"><img src="./img/iconadd.png"></button>
   </md-toolbar>
   
 	<!-- CONTAINER (BODY SITE) -->
-	<div class="container" layout="row" flex>
+	<div class="container" layout="row" flex ng-controller="InstantSearchController as srcCtrl">
 		<md-content id="content" flex>
-		<div class="pctContent" layout="row" ng-controller="GalleryController as gallery">
-			<ul class="inherit" ng-repeat="photos in gallery.pictures" layout-align="center" flex>
-				<li ng-repeat="image in photos.images" ng-class="{'photohover':hovering}" ng-mouseenter="hovering=true" ng-mouseleave="hovering=false">
-					<img ng-image-appear animation="bounceIn" ng-src="{{image}}" />
+		<div ng-show="isSearchFocused"  class="hashContent animate-show-hide" layout="row"  >
+			<ul flex>
+				<li ng-repeat="items in srcCtrl.listahash">
+					<a ng-repeat="hash in items.hash" href="">{{hash}}</a>
 				</li>
+				<li class="live">{{tag.hashs.inputValue}}</li>
+			</ul>
+			
+		</div>
+		<div class="pctContent" layout="row">
+		<ul class="inherit" layout-align="center" flex>
+			<li ng-class="{'photohover':hovering}" 
+			    ng-repeat="i in images | searchFor:tag.hashs.inputValue"
+			    ng-mouseenter="hovering=true" ng-mouseleave="hovering = false">
+				<img ng-image-appear animation="bounceIn" ng-src="{{i.image}}" />
+			</li>
+		</ul>
+		
+			<!--  <ul class="inherit" ng-repeat="photos in gallery.pictures" layout-align="center" flex>
+				  <li ng-repeat="image in photos.images" ng-class="{'photohover':hovering}" ng-mouseenter="hovering=true" ng-mouseleave="hovering = false">
+					<img ng-image-appear animation="bounceIn" ng-src="{{image}}" />
+				</li> -->
 			</ul>
 		</div>
 		</md-content>

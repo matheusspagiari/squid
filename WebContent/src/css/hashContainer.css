@@ -1,0 +1,28 @@
+.hashContent li {
+	list-style-type: none;
+	display: inline;
+}
+
+.hashContent {
+	background: #7db9e8;
+}
+.animate-show-hide.ng-hide {
+  opacity: 0;
+}
+
+.animate-show-hide.ng-hide-add,
+.animate-show-hide.ng-hide-remove {
+  transition: all linear 0.5s;
+}
+
+
+.hashContent a {
+	padding: 6px;
+	-webkit-box-shadow: 1px 1px 2px 1px #797979;
+box-shadow: 1px 1px 2px 1px #797979;
+    background: white;
+    border-radius: 10px;
+    margin-right: 5px;
+    color: black;
+    text-decoration: none;
+}

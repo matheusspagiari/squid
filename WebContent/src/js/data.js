@@ -1,7 +1,7 @@
 var data = [
-  'AngularJS',
-  'C',
-  'C++',
+  'Viagem',
+  'Tatuagens',
+  'Pessoas',
   'C#',
   'CoffeeScript',
   'CSS',

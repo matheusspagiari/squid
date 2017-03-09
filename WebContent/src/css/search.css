@@ -25,14 +25,14 @@ body {
     margin-right: 10px;
 }
 
-md-toolbar button {
+md-toolbar button, md-toolbar input {
   transition: background-color 0.2s ease-out;
   background: none;
   border: none;
   padding-top: 5px;
 }
 
-.delete-button img {
+.buttons-search img {
 	width: 25px;
 } 
 
@@ -44,7 +44,7 @@ md-toolbar button {
 }
 
 md-toolbar {
-	background-color: #0a9dc7!important;
+	background-color: #7db9e8!important;
 	padding: 12px !important;
 }
   
@@ -54,8 +54,20 @@ md-toolbar {
   transition: all 5s ease;
 }
 
-.deleteIcon {
-	
-	background-image: url("../img/delete.svg");
-	
+
+#search-results {
+  width: 100%;
+  border: 1px solid #dedede;
+  border-radius: 3px;
+  box-sizing: border-box;
+  overflow-y: auto;
+}
+
+.search-result {
+  background: white;
+  padding: 10px;
+}
+
+.search-result:nth-child(even) {
+  background: #fafafa;
 }

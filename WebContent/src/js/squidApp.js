@@ -1,57 +1,100 @@
 var squidApp = angular.module("squidApp",['ngMaterial',"ngImageAppear"])
 
+	var hashs =[{
+		hash:["#amigas", "#neve", "#viagem"]
+	},
+	{
+		hash:["#viagem", "#paris", "#trip"]
+	},
+	
+	{
+		hash:["#trip", "#cabana", "#noite", "#viagem"]
+	}
+	];
 
-squidApp.controller('GalleryController', function(){
-	this.pictures = photos;
+squidApp.controller('tagController', function(){	
+	this.newItem = {};
+	this.addHash = function(newhash){
+		console.log(newhash);
+		hashs.hash.push(this.newItem);
+		this.newItem = {};
+	};
+		
 });
 
 
+squidApp.filter('searchFor', function(){
 
-var photos = [{
-	      images: [
-	        "./img/insta/insta-1.jpg",
-	        "./img/insta/insta-2.jpg",
-	        "./img/insta/insta-7.jpg",
-	        "./img/insta/insta-4.jpg"
-	      ],
-}];
+	// All filters must return a function. The first parameter
+	// is the data that is to be filtered, and the second is an
+	// argument that may be passed with a colon (searchFor:searchString)
 
+	return function(arr, searchString){
 
-squidApp.controller('searchController', function($scope) {
-	  $scope.data = data;
-	  $scope.setQuery = function(query) {
-	    $scope.query = query;
-	  };
-	});
+		if(!searchString){
+			return arr;
+		}
 
-   //Hide and show
-	
-	squidApp.controller('hideController', function(){
-	
-	});
-	// Returns the search function that will perform the filter on the data.
-	//
-	squidApp.filter('search', function() {
-	  return search;
-	});
+		var result = [];
 
-	// Returns an array of items where the item text matches the search query. In
-	// this example, both the query and item are converted to lower case for easier
-	// matching.
-	//
-	function search(arr, query) {
-	  if (!query) {
-	    return arr;
-	  }
+		searchString = searchString.toLowerCase();
 
-	  var results = [];
-	  query = query.toLowerCase();
+		// Using the forEach helper method to loop through the array
+		angular.forEach(arr, function(item){
 
-	  angular.forEach(arr, function(item) {
-	    if (item.toLowerCase().indexOf(query) !== -1) {
-	      results.push(item);
-	    }
-	  });
+			if(item.title.toLowerCase().indexOf(searchString) !== -1){
+				result.push(item);
+			}
 
-	  return results;
+		});
+
+		return result;
 	};
+
+});
+
+// The controller
+
+squidApp.controller ('InstantSearchController', function ($scope){		
+	this.listahash = hashs;
+	
+	this.check = false;
+	this.textHash="";
+	
+	  this.isHash = function(textHash){
+		this.textHash = textHash;
+		angular.forEach(hashs, function(hash){
+			console.log(textHash)
+			angular.forEach(hash.hash, function(value){
+				if(textHash = value){
+					this.check = true;
+					return this.check;
+				}
+			});
+		});
+			
+	};
+
+	// The data model. These items would normally be requested via AJAX,
+	// but are hardcoded here for simplicity. See the next example for
+	// tips on using AJAX.
+
+	$scope.images = [
+		{
+			title: '#amigas #neve #board',
+			image: './img/insta/insta-1.jpg'
+		},
+		{
+			title: '#viagem #paris #trip',
+			image: './img/insta/insta-2.jpg'
+		},
+		{
+			title: '#trip #cabana #noite #viagem',
+			image: './img/insta/insta-4.jpg'
+		},
+
+	
+	]
+
+
+});
