@@ -36,7 +36,7 @@
  										     ng-submit= "tab.addHash(newItem)">
 <!-- HEADER - SEARCH INPUT -->
 
- <md-toolbar layout="row" layout-xs="column">
+ <md-toolbar  layout="row" layout-xs="column">
  	<div flex class="tollbar" layout="row">
  	<i class="searchIcon"><img src="./img/search.svg"></i>
         <input flex type="text" class="btnCancel"
@@ -75,11 +75,6 @@
 				<img ng-image-appear animation="bounceIn" ng-src="{{i.image}}" />
 			</li>
 		</ul>
-		
-			<!--  <ul class="inherit" ng-repeat="photos in gallery.pictures" layout-align="center" flex>
-				  <li ng-repeat="image in photos.images" ng-class="{'photohover':hovering}" ng-mouseenter="hovering=true" ng-mouseleave="hovering = false">
-					<img ng-image-appear animation="bounceIn" ng-src="{{image}}" />
-				</li> -->
 			</ul>
 		</div>
 		</md-content>

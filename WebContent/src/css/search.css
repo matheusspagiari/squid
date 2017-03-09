@@ -12,6 +12,7 @@ body {
   border: none;
   background:none !important;
   box-sizing: border-box;
+  
 }
 
 .tollbar textarea:focus, input:focus{
@@ -19,18 +20,26 @@ body {
 }
 
 .tollbar {
+	-webkit-box-shadow: 1px 1px 6px 1px rgba(128, 125, 125, 0.55);
+box-shadow: 1px 1px 6px 1px rgba(128, 125, 125, 0.55);
 	padding: 0px 0px 0px 15px;
 	border-radius: 5px;
     background: white;
     margin-right: 10px;
 }
 
-md-toolbar button, md-toolbar input {
+md-toolbar button {
   transition: background-color 0.2s ease-out;
   background: none;
   border: none;
   padding-top: 5px;
 }
+
+.box-shadow-bottom{
+		-webkit-box-shadow: 0 5px 8px 0 #BDBDBD;
+box-shadow: 0 5px 8px 0 #BDBDBD;
+}
+
 
 .buttons-search img {
 	width: 25px;
