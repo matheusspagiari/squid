@@ -15,6 +15,10 @@ body {
   
 }
 
+.tollbar form {
+	width: 100% !important;
+}
+
 .tollbar textarea:focus, input:focus{
 	outline: none !important;
 }

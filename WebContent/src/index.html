@@ -32,17 +32,18 @@
   
   
 </head>
-<body ng-app="squidApp" layout="column" ng-controller = "tagController as tag"
- 										     ng-submit= "tab.addHash(newItem)">
+<body ng-app="squidApp" layout="column" ng-controller = "tagController as tag">
 <!-- HEADER - SEARCH INPUT -->
 
  <md-toolbar  layout="row" layout-xs="column">
  	<div flex class="tollbar" layout="row">
  	<i class="searchIcon"><img src="./img/search.svg"></i>
+ 	<form ng-submit= "submit()">
+ 	
         <input flex type="text" class="btnCancel"
                placeholder="Search"
-               name="searchHash"
-               ng-model="tag.hashs.inputValue"
+               name="text"
+               ng-model="valueInput"
                ng-focus="isSearchFocused=true"
                ng-blur="isSearchFocused=false">   </div>
         
@@ -51,26 +52,27 @@
               ng-click="query = ''">
               <img src="./img/delete.svg">
       </button>
-      
-      <button type="submit" ng-show="isSearchFocused" class="buttons-search"><img src="./img/iconadd.png"></button>
+      <button id="submit" type="submit" ng-show="isSearchFocused" class="buttons-search"><img src="./img/iconadd.png"></button>
   </md-toolbar>
+      </form>
+      
+      
   
 	<!-- CONTAINER (BODY SITE) -->
 	<div class="container" layout="row" flex ng-controller="InstantSearchController as srcCtrl">
 		<md-content id="content" flex>
 		<div ng-show="isSearchFocused"  class="hashContent animate-show-hide" layout="row"  >
 			<ul flex>
-				<li ng-repeat="items in srcCtrl.listahash">
-					<a ng-repeat="hash in items.hash" href="">{{hash}}</a>
-				</li>
-				<li class="live">{{tag.hashs.inputValue}}</li>
+	
+				<li ng-repeat="itens in list"><a href="">{{itens}}</a></li>
+				<li class="live">{{valueInput}}</li>
 			</ul>
 			
 		</div>
 		<div class="pctContent" layout="row">
 		<ul class="inherit" layout-align="center" flex>
 			<li ng-class="{'photohover':hovering}" 
-			    ng-repeat="i in images | searchFor:tag.hashs.inputValue"
+			    ng-repeat="i in images | searchFor:valueInput"
 			    ng-mouseenter="hovering=true" ng-mouseleave="hovering = false">
 				<img ng-image-appear animation="bounceIn" ng-src="{{i.image}}" />
 			</li>

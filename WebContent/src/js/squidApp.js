@@ -1,26 +1,30 @@
 var squidApp = angular.module("squidApp",['ngMaterial',"ngImageAppear"])
 
-	var hashs =[{
-		hash:["#amigas", "#neve", "#viagem"]
-	},
-	{
-		hash:["#viagem", "#paris", "#trip"]
-	},
+	var hashs =[
+	  "#amigas", "#neve", "#viagem", "#cabana"
+	  ];
 	
-	{
-		hash:["#trip", "#cabana", "#noite", "#viagem"]
-	}
-	];
 
-squidApp.controller('tagController', function(){	
-	this.newItem = {};
+/* squidApp.controller('tagController', function(){	
+	this.newItem = hashs;
 	this.addHash = function(newhash){
 		console.log(newhash);
 		hashs.hash.push(this.newItem);
 		this.newItem = {};
 	};
 		
-});
+}); */
+
+squidApp.controller('tagController', ['$scope', function($scope) {
+    $scope.list = hashs;
+    $scope.valueInput = '';
+    $scope.submit = function() {
+      if ($scope.valueInput) {
+        $scope.list.push("#" + this.valueInput);
+        $scope.valueInput = '';
+      }
+    };
+  }]);
 
 
 squidApp.filter('searchFor', function(){
